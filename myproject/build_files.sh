@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Collect static files into the STATIC_ROOT directory
+# Collect static files into STATIC_ROOT
 echo "Collecting static files..."
 python3 manage.py collectstatic --noinput
 
