@@ -12,9 +12,12 @@ from pymongo import MongoClient
 from rest_framework.views import APIView
 from django.http import HttpResponse, JsonResponse
 from bson import ObjectId
+from decouple import config
 
-# MongoDB connection string
-client = MongoClient("mongodb+srv://awaisamjad:N4VgJEMhoLvwcPld@cluster0.zmzyi.mongodb.net/")
+
+
+mongo_client_host = config('MONGO_CLIENT_HOST')
+client = MongoClient(mongo_client_host)
 
 # Access the database and collection
 db = client["user"]

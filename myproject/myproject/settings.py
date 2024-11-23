@@ -75,14 +75,16 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+from decouple import config
+
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'djangocourses1',  # Your MongoDB database name
+        'NAME': config('MONGO_DB_NAME'),  # Database name from .env
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb+srv://awaisamjad:N4VgJEMhoLvwcPld@cluster0.zmzyi.mongodb.net/djangocourses?retryWrites=true&w=majority',
-            'authMechanism': 'SCRAM-SHA-1',
+            'host': config('MONGO_CLIENT_HOST'),  # Connection string from .env
+            'authMechanism': config('MONGO_AUTH_MECHANISM'),  # Auth mechanism from .env
         },
     }
 }
